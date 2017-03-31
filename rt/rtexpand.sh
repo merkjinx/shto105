@@ -4,11 +4,11 @@ echo -n "what is the password length"
 read passlength
 echo "starting..."
 
-filelen=$(wc -l rt.txt | cut -c 6-9)
+filelen=$(wc -l $1 | cut -c 6-9)
 
 for (( i = 1; i <= $filelen; i++))
 do
-rthash=$(sed -n "$i"p rt.txt )
+rthash=$(sed -n "$i"p $1 )
 lad1=$(echo $rthash | awk -F '[ \t]+|/' '{print $1}' )
 lad2=$(echo $rthash | awk -F '[ \t]+|/' '{print $2}' )
 start=$(echo $lad1 | md5)
